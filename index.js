@@ -1,7 +1,5 @@
 import searchInput from "./components/search-bar/search-bar.js";
 import { createCharacterCard } from "./components/card/card.js";
-// import { nextButton }from "./components/createButton/createButton.js";
-// import { prevButton } from "./components/createButton/createButton.js";
 import createNavPagination from "./components/nav-pagination/nav-pagination.js";
 import { nextButton } from "./components/createButton/createButton.js";
 import { prevButton } from "./components/createButton/createButton.js";
@@ -21,10 +19,9 @@ export const pagination = createNavPagination();
 let url = 'https://rickandmortyapi.com/api/character'
 
 //const searchQuery = "";
-
 export async function fetchCharacters() {
   const response = await fetch(
-    url + `?page=${page}` + `$&name${x}`
+    url + `?page=${page}` + `&name=${x}`
   );
   const data = await response.json();
 
@@ -37,8 +34,7 @@ export async function fetchCharacters() {
   characters
     .map(createCharacterCard)
     .forEach((card) => cardContainer.append(card));
-  console.log('eol')
-
+  console.log(characters);
 }
 
 fetchCharacters();
