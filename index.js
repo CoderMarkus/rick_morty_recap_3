@@ -14,6 +14,7 @@ const page = 1;
 const searchQuery = "";
 
 async function fetchCharacters() {
+
   const response = await fetch(
     "https://rickandmortyapi.com/api/character?page=<pageIndex>"
   );
@@ -37,3 +38,6 @@ pagination = createPagination();
 
 navigation.append(prevButton, pagination, nextButton);
 pagination.textContent = `${page} / ${maxPage}`;
+
+  
+
