@@ -14,7 +14,6 @@ const cardContainer = document.querySelector('[data-js="card-container"]');
 
 const navigation = document.querySelector('[data-js="navigation"]');
 export const input = document.querySelector('[data-js="search-bar__input"]');
-// let searchQuery = inputvalue;
 // States
 
 let page = 1;

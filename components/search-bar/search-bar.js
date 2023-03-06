@@ -13,4 +13,4 @@ export default function searchInput () {
     console.log(x);
     fetchCharacters();
     });
-    }
+}
