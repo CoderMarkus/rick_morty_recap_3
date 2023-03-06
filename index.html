@@ -7,6 +7,7 @@
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
     <title>Rick and Morty Character Log</title>
+    <script type="module" src="./index.js"></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -20,6 +21,7 @@
             type="text"
             placeholder="search characters"
             aria-label="character name"
+            data-js="search-bar__input"
           />
           <button class="search-bar__button" aria-label="search for character">
             <img
@@ -56,5 +58,4 @@
     </main>
     <nav class="navigation" data-js="navigation"></nav>
   </body>
-  <script type="module" src="./index.js"></script>
 </html>
