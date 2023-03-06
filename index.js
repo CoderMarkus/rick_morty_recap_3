@@ -8,14 +8,11 @@ const cardContainer = document.querySelector('[data-js="card-container"]');
 //);
 //const searchBar = document.querySelector('[data-js="search-bar"]');
 const navigation = document.querySelector('[data-js="navigation"]');
-//const prevButton = document.querySelector('[data-js="button-prev"]');
-//const nextButton = document.querySelector('[data-js="button-next"]');
-// const pagination = document.querySelector('[data-js="pagination"]');
 
 // States
 
 let page = 1;
-let maxPage = 42;
+
 //const searchQuery = "";
 
 async function fetchCharacters() {
@@ -25,6 +22,7 @@ async function fetchCharacters() {
   const data = await response.json();
 
   const characters = data.results;
+  const maxPage = data.info.pages;
 
   pagination.textContent = `${page} / ${maxPage}`;
 
@@ -34,9 +32,6 @@ async function fetchCharacters() {
     .map(createCharacterCard)
     .forEach((card) => cardContainer.append(card));
   console.log(characters);
-
-  maxPage = characters.length;
-  console.log("maxPage:", maxPage);
 }
 
 fetchCharacters();
