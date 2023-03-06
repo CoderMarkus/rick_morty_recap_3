@@ -1,19 +1,22 @@
 import searchQuery from "./components/search-bar/search-bar.js";
-
 import { createCharacterCard } from "./components/card/card.js";
 import createNavButton from "./components/nav-button/nav-button.js";
 import createNavPagination from "./components/nav-pagination/nav-pagination.js";
 
+export const searchBar = document.querySelector('[data-js="search-bar"]');
 const cardContainer = document.querySelector('[data-js="card-container"]');
 //const searchBarContainer = document.querySelector(
 //  '[data-js="search-bar-container"]'
 //);
-//const searchBar = document.querySelector('[data-js="search-bar"]');
+
 const navigation = document.querySelector('[data-js="navigation"]');
+export const input = document.querySelector('[data-js="search-bar__input"]');
 
 // States
 
 let page = 1;
+
+//const searchQuery = "";
 
 async function fetchCharacters() {
   const response = await fetch(
@@ -25,7 +28,6 @@ async function fetchCharacters() {
   const maxPage = data.info.pages;
 
   pagination.textContent = `${page} / ${maxPage}`;
-
   cardContainer.innerHTML = "";
 
   characters
@@ -53,3 +55,4 @@ const nextButton = createNavButton("next", () => {
 const pagination = createNavPagination();
 
 navigation.append(prevButton, pagination, nextButton);
+searchQuery();
