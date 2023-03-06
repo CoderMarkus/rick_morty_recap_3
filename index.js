@@ -1,26 +1,30 @@
-import searchQuery from "./components/search-bar/search-bar.js";
+import searchInput from "./components/search-bar/search-bar.js";
 import { createCharacterCard } from "./components/card/card.js";
-import createNavButton from "./components/nav-button/nav-button.js";
+// import { nextButton }from "./components/createButton/createButton.js";
+// import { prevButton } from "./components/createButton/createButton.js";
 import createNavPagination from "./components/nav-pagination/nav-pagination.js";
-
+import { nextButton } from "./components/createButton/createButton.js";
+import { prevButton } from "./components/createButton/createButton.js";
+import { page } from "./components/createButton/createButton.js";
+import { x } from "./components/search-bar/search-bar.js"; 
 export const searchBar = document.querySelector('[data-js="search-bar"]');
 const cardContainer = document.querySelector('[data-js="card-container"]');
 //const searchBarContainer = document.querySelector(
 //  '[data-js="search-bar-container"]'
 //);
 
-const navigation = document.querySelector('[data-js="navigation"]');
+export const navigation = document.querySelector('[data-js="navigation"]');
 export const input = document.querySelector('[data-js="search-bar__input"]');
-
+export const pagination = createNavPagination();
 // States
 
-let page = 1;
+let url = 'https://rickandmortyapi.com/api/character'
 
 //const searchQuery = "";
 
-async function fetchCharacters() {
+export async function fetchCharacters() {
   const response = await fetch(
-    `https://rickandmortyapi.com/api/character?page=${page}`
+    url + `?page=${page}` + `$&name${x}`
   );
   const data = await response.json();
 
@@ -33,26 +37,10 @@ async function fetchCharacters() {
   characters
     .map(createCharacterCard)
     .forEach((card) => cardContainer.append(card));
-  console.log(characters);
+  console.log('eol')
+
 }
 
 fetchCharacters();
-
-const prevButton = createNavButton("prev", () => {
-  if (page <= 1) return;
-  page--;
-  fetchCharacters();
-  console.log(page);
-});
-
-const nextButton = createNavButton("next", () => {
-  if (page >= 42) return;
-  page++;
-  fetchCharacters();
-  console.log(page);
-});
-
-const pagination = createNavPagination();
-
 navigation.append(prevButton, pagination, nextButton);
-searchQuery();
+searchInput();
