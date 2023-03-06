@@ -24,15 +24,16 @@ async function fetchCharacters() {
 prevButton = createNavButton("prev", () => {
   if (page <= 1) return;
   page--;
-  fetchCharacters;
+  fetchCharacters();
 });
 
 nextButton = createNavButton("next", () => {
   if (page >= 1) return;
   page++;
-  fetchCharacters;
+  fetchCharacters();
 });
 
 pagination = createPagination();
 
 navigation.append(prevButton, pagination, nextButton);
+pagination.textContent = `${page} / ${maxPage}`;
