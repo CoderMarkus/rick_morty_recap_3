@@ -14,7 +14,30 @@ const page = 1;
 const searchQuery = "";
 
 async function fetchCharacters() {
-  const response = await fetch("https://rickandmortyapi.com/api/character");
+
+  const response = await fetch(
+    "https://rickandmortyapi.com/api/character?page=<pageIndex>"
+  );
   const data = await response.json();
   return data;
 }
+
+prevButton = createNavButton("prev", () => {
+  if (page <= 1) return;
+  page--;
+  fetchCharacters();
+});
+
+nextButton = createNavButton("next", () => {
+  if (page >= 1) return;
+  page++;
+  fetchCharacters();
+});
+
+pagination = createPagination();
+
+navigation.append(prevButton, pagination, nextButton);
+pagination.textContent = `${page} / ${maxPage}`;
+
+  
+
