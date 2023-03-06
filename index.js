@@ -1,7 +1,10 @@
-import searchQuery from "./components/search-bar/search-bar.js";
+import searchInput from "./components/search-bar/search-bar.js";
 import { createCharacterCard } from "./components/card/card.js";
 import createNavButton from "./components/nav-button/nav-button.js";
 import createNavPagination from "./components/nav-pagination/nav-pagination.js";
+import {x} from "./components/search-bar/search-bar.js";
+
+// import inputvalue from "./components/search-bar/search-bar.js";
 
 export const searchBar = document.querySelector('[data-js="search-bar"]');
 const cardContainer = document.querySelector('[data-js="card-container"]');
@@ -11,16 +14,17 @@ const cardContainer = document.querySelector('[data-js="card-container"]');
 
 const navigation = document.querySelector('[data-js="navigation"]');
 export const input = document.querySelector('[data-js="search-bar__input"]');
-
+// let searchQuery = inputvalue;
 // States
 
 let page = 1;
-
+let url = 'https://rickandmortyapi.com/api/character'
 //const searchQuery = "";
 
-async function fetchCharacters() {
+
+export async function fetchCharacters() {
   const response = await fetch(
-    `https://rickandmortyapi.com/api/character?page=${page}`
+    url + `?page=${page}` + `&name=${x}`
   );
   const data = await response.json();
 
@@ -55,4 +59,4 @@ const nextButton = createNavButton("next", () => {
 const pagination = createNavPagination();
 
 navigation.append(prevButton, pagination, nextButton);
-searchQuery();
+searchInput();
