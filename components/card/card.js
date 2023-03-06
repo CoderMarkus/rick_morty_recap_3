@@ -1,5 +1,3 @@
-const cardContainer = document.querySelector("[card-container]");
-
 export function createCharacterCard(character) {
   const card = document.createElement("li");
   card.classList.add("card");
@@ -24,6 +22,5 @@ export function createCharacterCard(character) {
             </dl>
           </div>`;
 
-  cardContainer.append(card);
   return card;
 }
